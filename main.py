@@ -4,3 +4,6 @@ import yfinance as yf #імпортували бібліотеку для роб
 historical_data = yf.download("NFLX", period="1y")
 # print(historical_data)
 
+#перевіряємо DataFrame, на наявність відсутніх значень, і видаляємо їх
+historical_data_cleaned = historical_data.dropna()
+
