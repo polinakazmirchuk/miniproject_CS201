@@ -16,3 +16,7 @@ def visualize(df):
     ax.plot(df.index, df['Close'], label='Closing Price', color='purple') #сторили лінію на графіку для closing price
     ax.plot(df.index, df['SMA_fast'], label='Fast MA', color='lightblue') #сторили лінію на графіку для короткострокових ковзних середніх
     ax.plot(df.index, df['SMA_slow'], label='Slow MA', color='lightgreen') #сторили лінію на графіку для довгострокових ковзних середніх
+
+    buy = df[df['Action'] == 1] #знаходимо дні, коли купували акцію
+    sell = df[df['Action'] == -1] #знаходимо дні, коли продавали акцію
+
