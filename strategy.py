@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from main import historical_data_cleaned
+# from main import historical_data_cleaned
 
 def generate_signals(df: pd.DataFrame, short: int = 20, long: int = 100)-> pd.DataFrame:
     data = df.copy() # копія таблиці данних з main
@@ -16,11 +16,11 @@ def generate_signals(df: pd.DataFrame, short: int = 20, long: int = 100)-> pd.Da
     data["Action"] = data["Signal"].diff()
     return data
 
-# передаємо очищені дані в функцію
-df_with_signals = generate_signals(historical_data_cleaned)
-
-# створимо файл для перегляду повного результату
-df_with_signals.to_csv("result.csv", encoding="utf-8")
+# # передаємо очищені дані в функцію
+# df_with_signals = generate_signals(historical_data_cleaned)
+#
+# # створимо файл для перегляду повного результату
+# df_with_signals.to_csv("result.csv", encoding="utf-8")
 
 # тестовий блок, який виконується тільки при прямому запуску цього файлу
 if __name__ == "__main__":
