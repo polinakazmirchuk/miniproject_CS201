@@ -19,4 +19,13 @@ def visualize(df):
 
     buy = df[df['Action'] == 1] #знаходимо дні, коли купували акцію
     sell = df[df['Action'] == -1] #знаходимо дні, коли продавали акцію
+    ax.scatter(buy.index, buy['Close'], marker = '^', color = 'green', label = 'Buy signal', s=100) #точки купівлі
+    ax.scatter(sell.index, sell['Close'], marker = 'v', color = 'red', label = 'Sell signal', s=100) #точки продажу
+    ax.set_title('Strategy for NFLX')
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Price')
+    ax.legend()
+    plt.show()
+
+
 
