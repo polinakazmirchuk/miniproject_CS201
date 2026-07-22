@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def calculate_p_and_l(df: pd.DataFrame):
     data = df.copy() #зробили копію щоб випадково не змінити дані
@@ -8,3 +9,8 @@ def calculate_p_and_l(df: pd.DataFrame):
     data['Accumulated return'] = (1 + data['Strategy return']).cumprod() #рахуємо накопичений прибуток
     return data
 
+
+
+def visualize(df):
+    fig, ax = plt.subplots()
+    ax.plot(df.index, df['Close'], label='Closing Price', color='blue') #сторили лінію на графіку для closing price
