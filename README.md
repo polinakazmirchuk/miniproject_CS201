@@ -24,7 +24,8 @@ prepare it for further analysis.
    * Computed a fast 20-day Simple Moving Average (`SMA_fast`) and a slow 100-day Simple Moving Average (`SMA_slow`).
    * Generated market state indicators (`Signal`) and detected specific buy/sell trade execution points (`Action`) using `.diff()`.
 4. **Export & Verification:** Evaluated the generated trade points and saved the clean, processed dataset to a `result.csv` file for easy review and further backtesting.
-ДОПИСАТИ ІНШІ ІНСТРУМЕНТИ
+5. **P&L Analysis:** We created a `calculate_p_and_l()` function to evaluate the total financial return of our strategy, tracking profit and loss based on generated trading actions.
+6. **Data visualization:** We developed a `visualize()` function using  `matplotlib.pyplot` library to plot the stock's closing price alongside fast and slow moving averages, marking buy (`green triangles (^)`) and sell (`red triangles (v)`) signals directly on the chart.
 
 ### Summary of the strategy
 The core logic of our project relies on the **Simple Moving Average (SMA) Crossover** strategy, which is a classic trend-following technique used in technical analysis:
