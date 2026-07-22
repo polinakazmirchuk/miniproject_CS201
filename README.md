@@ -16,11 +16,19 @@ noticeable market fluctuations. Such price movements make Netflix a suitable ass
 testing trading strategies based on moving averages.
 
 ### Methods we used for the task and the process of work
-1. Data collection: historical stock data for Netflix (NFLX) was downloaded from Yahoo Finance using the ```yfinance``` library. One year
+1. **Data collection:** historical stock data for Netflix (NFLX) was downloaded from Yahoo Finance using the ```yfinance``` library. One year
 of daily market data was collected.
-2. Data Preparation: the data was stored in a Pandas DataFrame, checked for missing values, and cleaned using the ```dropna()``` method to
+2. **Data Preparation:** the data was stored in a Pandas DataFrame, checked for missing values, and cleaned using the ```dropna()``` method to
 prepare it for further analysis.
+3. **Strategy implementation and Signal generation:** We created the `generate_signals()` function using `pandas` and `numpy` to compute moving averages and determine precise market signals:
+   * Computed a fast 20-day Simple Moving Average (`SMA_fast`) and a slow 100-day Simple Moving Average (`SMA_slow`).
+   * Generated market state indicators (`Signal`) and detected specific buy/sell trade execution points (`Action`) using `.diff()`.
+4. **Export & Verification:** Evaluated the generated trade points and saved the clean, processed dataset to a `result.csv` file for easy review and further backtesting.
 ДОПИСАТИ ІНШІ ІНСТРУМЕНТИ
 
 ### Summary of the strategy
-пояснення стратегії
+The core logic of our project relies on the **Simple Moving Average (SMA) Crossover** strategy, which is a classic trend-following technique used in technical analysis:
+
+* **Bullish Trend (Buy Signal : Action = +1):** Occurs when the short-term average (`SMA_fast`) crosses above the long-term average (`SMA_slow`). This indicates rising momentum and signals the algorithm to buy the stock.
+* **Bearish Trend (Sell Signal : Action = -1):** Occurs when `SMA_fast` drops below `SMA_slow`. This indicates a potential price decline and signals the algorithm to sell or hold cash.
+* **Hold (Action = 0):** As long as no crossover happens, we hold our current position without placing unnecessary trades.
