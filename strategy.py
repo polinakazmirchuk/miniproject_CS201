@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
+from main import historical_data_cleaned
 
-def genarate_signals(df: pd.DataFrame, short: int = 20, long: int = 100)-> pd.DataFrame:
+def generate_signals(df: pd.DataFrame, short: int = 20, long: int = 100)-> pd.DataFrame:
     data = df.copy() # копія таблиці данних з main
     # рахуємо швидке та повілье просте ковзне середнє
     data["SMA_fast"] = data["Close"].rolling(window=short).mean()
@@ -15,4 +16,19 @@ def genarate_signals(df: pd.DataFrame, short: int = 20, long: int = 100)-> pd.Da
     data["Action"] = data["Signal"].diff()
     return data
 
+# передаємо очищені дані в функцію
+df_with_signals = generate_signals(historical_data_cleaned)
 
+# створимо файл для перегляду повного результату
+df_with_signals.to_csv("result.csv", encoding="utf-8")
+
+# тестовий блок, який виконується тільки при прямому запуску цього файлу
+if __name__ == "__main__":
+    import yfinance as yf
+    raw_data = yf.download("NFLX", period="1y")
+    historical_data_cleaned = raw_data.dropna()
+    df_with_signals = generate_signals(historical_data_cleaned)
+    # для перевірки виведемо тільки ті дані, коли купуємо або продаємо
+    print("ДНІ З УГОДАМИ")
+    trades = df_with_signals[(df_with_signals['Action'] != 0) & (df_with_signals['Action'].notna())]
+    print(trades[['Close', 'SMA_fast', 'SMA_slow', 'Signal', 'Action']])
