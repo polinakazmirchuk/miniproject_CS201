@@ -23,7 +23,7 @@ def visualize(df):
     ax.scatter(sell.index, sell['Close'], marker = 'v', color = 'red', label = 'Sell signal', s=100) #точки продажу
     ax.set_title('Strategy for NFLX')
     ax.set_xlabel('Date')
-    ax.set_ylabel('Price')
+    ax.set_ylabel('Price, $')
     ax.legend()
     plt.show()
 
