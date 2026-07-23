@@ -33,3 +33,6 @@ The core logic of our project relies on the **Simple Moving Average (SMA) Crosso
 * **Bullish Trend (Buy Signal : Action = +1):** Occurs when the short-term average (`SMA_fast`) crosses above the long-term average (`SMA_slow`). This indicates rising momentum and signals the algorithm to buy the stock.
 * **Bearish Trend (Sell Signal : Action = -1):** Occurs when `SMA_fast` drops below `SMA_slow`. This indicates a potential price decline and signals the algorithm to sell or hold cash.
 * **Hold (Action = 0):** As long as no crossover happens, we hold our current position without placing unnecessary trades.
+
+### Strategy results
+Using `iloc[-1]` for finding the result of the last trading day of the year. As we can see, according to the calculations we got the value `-5.70%`. The minus before the value indicates that the simple SMA crossover strategy was unprofitable for Netflix stock over this one-year period, likely due to false signals during sideways market trends.
