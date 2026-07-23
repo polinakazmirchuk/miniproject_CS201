@@ -35,4 +35,4 @@ The core logic of our project relies on the **Simple Moving Average (SMA) Crosso
 * **Hold (Action = 0):** As long as no crossover happens, we hold our current position without placing unnecessary trades.
 
 ### Strategy results
-Using `iloc[-1]` for finding the result of the last trading day of the year. As we can see, according to the calculations we got the value `-5.70%`. The minus before the value indicates that the simple SMA crossover strategy was unprofitable for Netflix stock over this one-year period, likely due to false signals during sideways market trends.
+Using `iloc[-1]` for finding the result of the last trading day of the year. As we can see, according to the calculations we got the value `-16.63%`. The minus before the value indicates that the simple SMA crossover strategy was unprofitable for Netflix stock over this one-year period, likely due to false signals during sideways market trends.
